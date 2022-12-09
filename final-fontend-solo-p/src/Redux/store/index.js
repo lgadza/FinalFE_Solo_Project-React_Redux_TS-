@@ -4,7 +4,8 @@ import {
   combineReducers,
 } from "@reduxjs/toolkit";
 import mainReducer from "../reducers";
-import mainSearchReducer from "../reducers/mainSearchReducer";
+import getSongs from "../reducers/getSongs";
+import getAlbums from "../reduces/albumSearch";
 import companySearch from "../reducers/companySearch";
 import searchResultsReducer from "../reducers/searchResults";
 import localStorage from "redux-persist/lib/storage";
@@ -23,7 +24,8 @@ const persistConfig = {
 //  process.env.REACT_APP_SECRET_KEY
 
 const bigReducer = combineReducers({
-  job: mainSearchReducer,
+  songs: getSongs,
+  albums: getAlbums,
   favourite: mainReducer,
   company: companySearch,
   jobSearch: searchResultsReducer,
