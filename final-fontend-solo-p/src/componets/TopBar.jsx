@@ -1,4 +1,16 @@
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { Search } from "react-bootstrap-icons";
+import { getSongs } from "../Redux/actions";
+
 const TopBar = () => {
+  const [query, setQuery] = useState("");
+  const [jobs, setJobs] = useState([]);
+  const dispatch = useDispatch();
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+    dispatch(getSongs(Search));
+  };
   return (
     <div class="row m-3 justify-content-between top-content-bar">
       <div class="nav-controls d-flex justify-content-between align-items-center">
@@ -9,14 +21,12 @@ const TopBar = () => {
           <i class="fa-solid fa-chevron-right"></i>
         </div>
         <i class="bi bi-search lupa"> </i>{" "}
-        <a href="search.html">
-          {" "}
-          <input
-            type="text"
-            id="searchbar"
-            placeholder="What do you want to Listen"
-          ></input>
-        </a>
+        <input
+          type="text"
+          id="searchbar"
+          onChange={handleChange}
+          placeholder="What do you want to Listen"
+        ></input>
       </div>
       <div class="user-menu d-flex align-items-center">
         <img class="user-image" src="img/profile-image.jpg" />

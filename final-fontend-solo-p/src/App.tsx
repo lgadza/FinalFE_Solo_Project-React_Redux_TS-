@@ -1,14 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import MyNavBar from "./componets/MyNavBar";
-import Footer from "./componets/Footer";
-import KitchenSinkExample from "./componets/StickCard";
 import GoodMorning from "./componets/PlayList";
 import TopBar from "./componets/TopBar";
+import * as Icon from "react-bootstrap-icons";
+import Album from "./componets/album/Album";
+import Home from "./componets/album/Home";
 
 function App() {
   return (
@@ -20,7 +20,11 @@ function App() {
           </Col>
           <Col md={10} className="pl-0">
             <TopBar />
-            <GoodMorning />
+
+            <Routes>
+              <Route element={<Home />} path="/" />
+              <Route element={<Album />} path="/album/:albumId" />
+            </Routes>
           </Col>
         </Row>
       </Container>
@@ -28,9 +32,6 @@ function App() {
         <Row>
           <Col></Col>
         </Row>
-      </Container>
-      <Container fluid className="px-0">
-        <Footer />
       </Container>
     </BrowserRouter>
   );

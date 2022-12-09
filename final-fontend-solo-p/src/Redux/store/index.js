@@ -3,11 +3,11 @@ import {
   getDefaultMiddleware,
   combineReducers,
 } from "@reduxjs/toolkit";
-import mainReducer from "../reducers";
-import getSongs from "../reducers/getSongs";
+// import getSongs from "../reducers/getSongs";
+import getSongs from "../reduces/songResults";
+import currentAlbum from "../reduces/currentAlbum";
 import getAlbums from "../reduces/albumSearch";
-import companySearch from "../reducers/companySearch";
-import searchResultsReducer from "../reducers/searchResults";
+import getArtist from "../reduces/artistSearch";
 import localStorage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import { persistReducer, persistStore } from "redux-persist";
@@ -26,9 +26,11 @@ const persistConfig = {
 const bigReducer = combineReducers({
   songs: getSongs,
   albums: getAlbums,
-  favourite: mainReducer,
-  company: companySearch,
-  jobSearch: searchResultsReducer,
+  artist: getArtist,
+  currentAlbum: currentAlbum,
+  // favourite: mainReducer,
+  // company: companySearch,
+  // jobSearch: searchResultsReducer,
 });
 const persistedReducer = persistReducer(persistConfig, bigReducer);
 

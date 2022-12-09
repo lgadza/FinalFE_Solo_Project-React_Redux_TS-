@@ -6,7 +6,7 @@ export const SET_COMPANY_SEARCH = "SET_COMPANY-SEARCH";
 export const GET_ALBUM_SEARCH = "GET_ALBUM_SEARCH";
 export const GET_MAIN_SEARCH_LOADING = "GET_MAIN_SEARCH_LOADING";
 export const GET_MAIN_SEARCH_ERROR = "GET_MAIN_SEARCH_ERROR";
-export const GET_COMPANY_SEARCH = "GET_COMPANY_SEARCH";
+export const GET_CURRENT_ALBUM_SEARCH = "GET_CURRENT_ALBUM_SEARCH";
 
 export const addToFavAction = (job) => {
   return {
@@ -31,7 +31,7 @@ export const getSongs = (query) => {
     };
     const baseEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`;
     try {
-      let response = await fetch(baseEndpoint + query, options);
+      let response = await fetch(baseEndpoint, options);
       if (response.ok) {
         const data = await response.json();
         console.log("Songs:", data);
@@ -73,7 +73,7 @@ export const getSongs = (query) => {
   };
 };
 
-export const getArtist = (query) => {
+export const getAlbums = (query) => {
   console.log(query);
   return async (dispatch) => {
     const options = {
@@ -83,14 +83,14 @@ export const getArtist = (query) => {
         "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
       },
     };
-    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/search?q=song`;
+    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/search?q=hello`;
     try {
       let response = await fetch(baseEndpoint, options);
       if (response.ok) {
         const data = await response.json();
         console.log("Songs:", data);
         dispatch({
-          type: GET_ARTIST_SEARCH,
+          type: GET_ALBUM_SEARCH,
           payload: data,
         });
         setTimeout(() => {
@@ -126,25 +126,77 @@ export const getArtist = (query) => {
     }
   };
 };
-
-export const getAlbums = async (query) => {
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "0804dffc02mshffe59d44538faefp143e0bjsne323b0c03419",
-      "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-    },
-  };
-  const baseEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/search?q=${query}`;
-  console.log(query);
+export const getAlbum = (search) => {
+  console.log(search);
   return async (dispatch) => {
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "0804dffc02mshffe59d44538faefp143e0bjsne323b0c03419",
+        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+      },
+    };
+    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/album/`;
     try {
-      let response = await fetch(baseEndpoint + query, options);
+      let response = await fetch(baseEndpoint + search, options);
       if (response.ok) {
         const data = await response.json();
-        console.log("Abulms:", data);
+        console.log("Songs:", data);
         dispatch({
-          type: GET_ALBUM_SEARCH,
+          type: GET_CURRENT_ALBUM_SEARCH,
+          payload: data,
+        });
+        setTimeout(() => {
+          dispatch({
+            type: GET_MAIN_SEARCH_LOADING,
+            payload: false,
+          });
+        }, 100);
+      } else {
+        console.log("error");
+
+        dispatch({
+          type: GET_MAIN_SEARCH_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: GET_MAIN_SEARCH_ERROR,
+          payload: true,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+
+      dispatch({
+        type: GET_MAIN_SEARCH_LOADING,
+        payload: false,
+      });
+
+      dispatch({
+        type: GET_MAIN_SEARCH_ERROR,
+        payload: true,
+      });
+    }
+  };
+};
+export const getArtist = (query) => {
+  console.log(query);
+  return async (dispatch) => {
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "0804dffc02mshffe59d44538faefp143e0bjsne323b0c03419",
+        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+      },
+    };
+    const baseEndpoint = `https://striveschool-api.herokuapp.com/api/deezer/search?q=song`;
+    try {
+      let response = await fetch(baseEndpoint, options);
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Songs:", data);
+        dispatch({
+          type: GET_ARTIST_SEARCH,
           payload: data,
         });
         setTimeout(() => {
