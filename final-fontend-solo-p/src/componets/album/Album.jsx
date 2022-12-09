@@ -19,13 +19,16 @@ const Album = () => {
     dispatch(getAlbum(search));
   }, []);
   return (
-    <Container className="mt-5  w-100 pt-5">
+    <Container
+      className="mt-5  w-100 pt-5 px-0"
+      id="background-container-album"
+    >
       {album.cover_xl && (
         <>
           <div className="col-2" id="albumLeft">
             <img className="album-cover-album" src={album.cover_xl} />
           </div>
-          <div className="col-10 main-content" id="background-container-album">
+          <div className=" mx-0 px-4 main-content">
             <div id="album-info-container">
               <div className="col-12" id="toppart">
                 <Row>
@@ -54,21 +57,19 @@ const Album = () => {
                   </div>
                 </div>
                 <div className="col-12 p-0">
-                  <ul className="list-group songs-list">
-                    {album.tracks.data.map((song, i) => (
-                      <li className="row align-items-center">
-                        <Row className="song pl-5 ">
-                          <Col md={1}>{[i + 1]}</Col>
-                          <Col md={9} className="artisttitle">
-                            <span>{album.tracks.data[i].title}</span>
-                            <span className="fw-light">
-                              {album.tracks.data[i].artist.name}{" "}
-                            </span>
-                          </Col>
-                        </Row>
-                      </li>
-                    ))}
-                  </ul>
+                  {album.tracks.data.map((song, i) => (
+                    <Container className="row align-items-center">
+                      <Row className="song pl-5 ">
+                        <Col md={1}>{[i + 1]}</Col>
+                        <Col md={9} className="artisttitle">
+                          <span>{album.tracks.data[i].title}</span>
+                          <span className="fw-light">
+                            {album.tracks.data[i].artist.name}{" "}
+                          </span>
+                        </Col>
+                      </Row>
+                    </Container>
+                  ))}
                 </div>
               </div>
             </div>
