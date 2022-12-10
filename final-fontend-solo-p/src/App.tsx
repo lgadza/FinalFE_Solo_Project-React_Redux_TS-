@@ -9,6 +9,7 @@ import TopBar from "./componets/TopBar";
 import * as Icon from "react-bootstrap-icons";
 import Album from "./componets/album/Album";
 import Home from "./componets/album/Home";
+import SearchResults from "./componets/album/SearchResults";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Routes>
               <Route element={<Home />} path="/" />
               <Route element={<Album />} path="/album/:albumId" />
+              <Route element={<SearchResults />} path="/search" />
             </Routes>
           </Col>
         </Row>

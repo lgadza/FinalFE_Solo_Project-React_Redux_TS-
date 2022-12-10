@@ -94,3 +94,25 @@ a {
 .album-cover-album {
   width: 100%;
 }
+.main-content .artist-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.type {
+  background-color: #3b3d41;
+  padding: 0 10px;
+  border-radius: 10px;
+}
+.artist-card:hover {
+  background-color: #282c34 !important;
+  height: 13rem;
+}
+.search-songs {
+  display: flex !important;
+  /* justify-content: center !important; */
+  align-items: center !important;
+}
+li {
+  height: 4rem;
+}
