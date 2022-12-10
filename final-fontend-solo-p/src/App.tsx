@@ -4,9 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import MyNavBar from "./componets/MyNavBar";
-import GoodMorning from "./componets/PlayList";
 import TopBar from "./componets/TopBar";
-import * as Icon from "react-bootstrap-icons";
 import Album from "./componets/album/Album";
 import Home from "./componets/album/Home";
 import SearchResults from "./componets/album/SearchResults";
@@ -14,7 +12,7 @@ import SearchResults from "./componets/album/SearchResults";
 function App() {
   return (
     <BrowserRouter>
-      <Container fluid className="px-0">
+      <Container fluid className="px-0 background">
         <Row>
           <Col md={2} className="pr-0">
             <MyNavBar />

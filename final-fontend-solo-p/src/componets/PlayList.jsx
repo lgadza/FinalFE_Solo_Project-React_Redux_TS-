@@ -49,7 +49,7 @@ const PlayList = () => {
         <div className="col-12 pl-3 row" id="secondAlbumRow"></div>
       </div>
 
-      <div className="col-10 main-content"></div>
+      <div className="col-10 "></div>
       <ControlFooter />
     </Container>
   );
