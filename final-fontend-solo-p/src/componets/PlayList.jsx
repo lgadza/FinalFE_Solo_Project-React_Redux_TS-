@@ -21,7 +21,7 @@ const PlayList = () => {
   }, []);
 
   return (
-    <Container className=" w-100 main-content">
+    <Container fluid className=" w-100 main-content">
       <div className="row" id="undersearch">
         <h2 className="pl-3 mb-4">Good Morning</h2>
 

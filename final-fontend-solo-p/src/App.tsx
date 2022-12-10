@@ -30,11 +30,6 @@ function App() {
           </Col>
         </Row>
       </Container>
-      <Container className="MyContainer">
-        <Row>
-          <Col></Col>
-        </Row>
-      </Container>
     </BrowserRouter>
   );
 }

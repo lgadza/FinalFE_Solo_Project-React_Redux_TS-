@@ -72,6 +72,10 @@ a {
 .cardbground {
   background-color: #3b3d41;
 }
+.cardbground:hover {
+  background-color: #282c34;
+}
+
 .Image-movie-darken:hover {
   background-color: rgb(6, 6, 6);
   opacity: 0.7;
@@ -115,4 +119,25 @@ a {
 }
 li {
   height: 4rem;
+}
+.sidebar {
+  height: 100vh;
+  position: fixed;
+}
+.logo {
+  width: 14rem !important;
+}
+.setPlay {
+  position: relative;
+}
+.cardbground .bi-play-circle-fill {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  bottom: 0.5rem;
+  right: 0.5rem;
+}
+
+.cardbground:hover .cardbground .bi-play-circle-fill {
+  display: block !important;
 }
